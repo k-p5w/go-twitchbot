@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <title>Periodic SVG Refresh</title>
+</head>
+
+<body>
+    <svg id="my-svg" xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+        <text id="time-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial"
+            font-size="14" fill="black"></text>
+    </svg>
+
+    <script>
+        // SVG要素とテキスト要素の取得
+        const svgElement = document.getElementById('my-svg');
+        const textElement = document.getElementById('time-text');
+
+        // 現在の時間を表示する関数
+        function displayCurrentTime() {
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            textElement.textContent = timeString;
+
+            // 次の更新まで1000ミリ秒（1秒）待つ
+            setTimeout(displayCurrentTime, 1000);
+        }
+
+        // 初回の実行
+        displayCurrentTime();
+
+        // 指定した秒数ごとにページをリロードする関数
+        function refreshPage(seconds) {
+            setTimeout(function () {
+                location.reload();
+            }, seconds * 1000);
+        }
+
+        // 指定した秒数ごとにページをリロードする
+        refreshPage(10);
+    </script>
+</body>
+
+</html>
+
+<!-- 	<!DOCTYPE html>
+	<html lang="ja">
+<head>
+  <title>SVG</title>
+</head>
+<body>
+	<svg id="my-svg" xmlns="http://www.w3.org/2000/svg" width="700px" height="120px">
+	<text id="time-text" x="100px" y="50px" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="44px" fill="%v">
+	  <tspan x="100px" dy="-10px">%v</tspan>
+	  <tspan x="100px" dy="20px">%v</tspan>
+	</text>
+  </svg>
+  <script>
+
+  function refreshPage(seconds) {
+	  setTimeout(function () {
+		  location.reload();
+	  }, seconds * 1000);
+  }
+  refreshPage(10);
+</script>
+</body>
+</html> -->

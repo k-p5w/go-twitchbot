@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+    <text x="50%!" (string=black) y="50%!" (string=line1) dominant-baseline="middle" text-anchor="middle"
+        font-family="Arial" font-size="14" fill="line2">
+        <tspan x="50%!" (MISSING) dy="-0.5em">%!v(MISSING)</tspan>
+        <tspan x="50%!" (MISSING) dy="1em">%!v(MISSING)</tspan>
+    </text>
+</svg>
